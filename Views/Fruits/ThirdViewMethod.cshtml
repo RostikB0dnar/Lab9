@@ -1,0 +1,26 @@
+﻿@model List<string>
+
+<h2>Grouping of devices (according to tables)</h2>
+
+@{
+    var currentModel = Model.GroupBy(x => x.Substring(0, 1)).ToList();
+}
+
+@foreach (var group in currentModel)
+{
+    <table class="table" style="width:20%; border: 1px solid;">
+        <thead>
+            <tr>
+                <th class="text-center">@group.Key</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fruit in group)
+            {
+                <tr class="text-center">
+                    <td>@fruit</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
